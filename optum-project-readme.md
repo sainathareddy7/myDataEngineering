@@ -1,145 +1,51 @@
-# Optum End-to-End Data Engineering Project
+ Optum End-to-End Data Engineering Project
 
-**Claims Analytics and Provider Performance Insights**  
-*Azure Data Factory + Azure Databricks + ADLS Gen2 + Power BI*
+Claims Analytics and Provider Performance Insights  
+Azure Data Factory + Azure Databricks + ADLS Gen2 + Power BI
 
 ![Azure](https://img.shields.io/badge/Azure-0078D4?style=flat&logo=microsoft-azure&logoColor=white)
 ![Databricks](https://img.shields.io/badge/Databricks-FF3621?style=flat&logo=databricks&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
 ![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=flat&logo=power-bi&logoColor=black)
 
-## 📋 Project Overview
+ 📋 Project Overview
 
 This project implements a complete end-to-end data engineering pipeline for healthcare claims analytics using modern Azure cloud services. The solution processes healthcare data from multiple sources (CSV/JSON from On-Premises, Blob Storage, and Cosmos DB) through a medallion architecture (Bronze → Silver → Gold) to deliver actionable insights via Power BI dashboards.
 
-### 🎯 Business Objectives
-- **Claims Analytics**: Process and analyze healthcare claims data for trend identification
-- **Data Democratization**: Enable self-service analytics through curated data models
-
-- **Silver Layer**: Cleaned, validated, and conformed data
-- **Gold Layer**: Business-ready, aggregated data for analytics
-
-|-----------|------------|---------|
-| **Orchestration** | Azure Data Factory | Data movement and pipeline orchestration |
-| **Processing** | Azure Databricks | Data transformation and analytics |
-| **Storage** | Azure Data Lake Gen2 | Scalable data lake storage |
-| **Security** | Azure Key Vault | Secrets and credentials management |
-| **Serving** | Azure SQL Database + Delta Tables | Data serving layer |
-| **Visualization** | Power BI | Business intelligence and dashboards |
-| **Monitoring** | Azure Logic Apps | Pipeline monitoring and alerting |
-
-## 📊 Data Sources & Volume
-
-- **Hospital Data**: On-premises SQL Server (~10K records)
-- **Claims Data**: Cosmos DB (MongoDB API) (~50K JSON records)
-- **Patient Data**: Azure Blob Storage CSV files (~25K records)
-- **Reference Data**: Disease, Group, Subgroup, Subscriber master data
-- **Security-First**: Managed Identity authentication, Key Vault integration
-- **Scalability**: Auto-scaling Databricks clusters with Photon acceleration
-- **Reliability**: Automated retry logic, error handling, and monitoring
-- **Governance**: Unity Catalog for data governance and lineage tracking
-```
-
-### ✅ Advanced Features
-- **Delta Lake**: ACID transactions, time travel, and schema evolution
-- **Incremental Processing**: Efficient delta loads with change detection
-- **Data Quality**: Automated validation and cleansing rules
-- **Partitioning**: Date-based partitioning for optimal performance
-optum-data-engineering/
-├── architecture/
-│   ├── architecture-diagram.png
-│   └── data-flow-diagram.png
-├── databricks-notebooks/
-Optum End-to-End Data Engineering Project
-
-Claims Analytics and Provider Performance Insights
-Azure Data Factory + Azure Databricks + ADLS Gen2 + Power BI
-
-Azure
-Databricks
-Python
-Power BI
-
-Project Overview
-This project implements a complete end-to-end data engineering pipeline for healthcare claims analytics using modern Azure cloud services. The solution processes healthcare data from multiple sources CSV/JSON from On-Premises, Blob Storage, and Cosmos DB through a medallion architecture Bronze → Silver → Gold to deliver actionable insights via Power BI dashboards.
-
-Business Objectives
+ 🎯 Business Objectives
 - Claims Analytics: Process and analyze healthcare claims data for trend identification
 - Data Democratization: Enable self-service analytics through curated data models
 
-Architecture Pattern
-Medallion Architecture Lakehouse
-- Bronze Layer: Raw data ingestion and landing
 - Silver Layer: Cleaned, validated, and conformed data
 - Gold Layer: Business-ready, aggregated data for analytics
 
-Technology Stack
-| Component | Technology | Purpose |
-|-----------|------------|---------|
-| Orchestration | Azure Data Factory | Data movement and pipeline orchestration |
-| Processing | Azure Databricks | Data transformation and analytics |
-| Storage | Azure Data Lake Gen2 | Scalable data lake storage |
-| Security | Azure Key Vault | Secrets and credentials management |
-| Serving | Azure SQL Database + Delta Tables | Data serving layer |
-| Visualization | Power BI | Business intelligence and dashboards |
-| Monitoring | Azure Logic Apps | Pipeline monitoring and alerting |
+| Component        | Technology                | Purpose                                 |
+|------------------|--------------------------|-----------------------------------------|
+| Orchestration | Azure Data Factory       | Data movement and pipeline orchestration |
+| Processing    | Azure Databricks         | Data transformation and analytics        |
+| Storage       | Azure Data Lake Gen2     | Scalable data lake storage               |
+| Security      | Azure Key Vault          | Secrets and credentials management       |
+| Serving       | Azure SQL Database + Delta Tables | Data serving layer                |
+| Visualization | Power BI                 | Business intelligence and dashboards     |
+| Monitoring    | Azure Logic Apps         | Pipeline monitoring and alerting         |
 
-Data Sources & Volume
-- Hospital Data: On-premises SQL Server ~10K records
-- Claims Data: Cosmos DB MongoDB API ~50K JSON records
-- Patient Data: Azure Blob Storage CSV files ~25K records
+ 📊 Data Sources & Volume
+
+- Hospital Data: On-premises SQL Server (~10K records)
+- Claims Data: Cosmos DB (MongoDB API) (~50K JSON records)
+- Patient Data: Azure Blob Storage CSV files (~25K records)
 - Reference Data: Disease, Group, Subgroup, Subscriber master data
-
-Key Features
-Data Engineering Best Practices
 - Security-First: Managed Identity authentication, Key Vault integration
 - Scalability: Auto-scaling Databricks clusters with Photon acceleration
 - Reliability: Automated retry logic, error handling, and monitoring
-- Governance: Unity Catalog for data governance and lineage tracking
+```
 
-Medallion Architecture Implementation
-Raw Sources → Bronze Landing → Silver Cleansed → Gold Curated → Power BI
-
-Advanced Features
+ ✅ Advanced Features
 - Delta Lake: ACID transactions, time travel, and schema evolution
 - Incremental Processing: Efficient delta loads with change detection
 - Data Quality: Automated validation and cleansing rules
 - Partitioning: Date-based partitioning for optimal performance
-
-Repository Structure
-optum-data-engineering/
-├── architecture/
-│   ├── architecture-diagram.png
-│   └── data-flow-diagram.png
-├── databricks-notebooks/
-│   ├── bronze-to-silver/
-│   │   ├── claims_transformation.py
-│   │   ├── patient_transformation.py
-│   │   ├── hospital_transformation.py
-│   │   └── reference_data_transformation.py
-│   ├── silver-to-gold/
-│   │   └── gold_curated_dataset.py
-│   └── utilities/
-│       ├── generic_transformations.py
-│       └── data_quality_checks.py
-├── adf-pipelines/
-│   ├── raw-to-bronze-pipeline.json
-│   ├── bronze-to-silver-pipeline.json
-│   ├── silver-to-gold-pipeline.json
-│   └── master-orchestration-pipeline.json
-├── infrastructure/
-│   ├── arm-templates/
-│   └── terraform/ future
-├── power-bi/
-│   ├── optum-analytics-dashboard.pbix
-│   └── semantic-model-documentation.md
-├── documentation/
-│   ├── technical-design-document.md
-│   ├── deployment-guide.md
-│   └── troubleshooting.md
-├── sample-data/
-│   └── anonymized-sample-datasets/
-└── README.md
+ 📁 Repository Structure
 
 Technical Architecture
 Data Flow Pipeline
@@ -178,7 +84,7 @@ Quick Deployment
    git clone https://github.com/sainathareddy7/optum-data-engineering.git
    cd optum-data-engineering
 2. Deploy Infrastructure
-   # Deploy using ARM template
+    Deploy using ARM template
    az deployment group create \
      --resource-group rg-optum-analytics-dev \
      --template-file infrastructure/arm-templates/main.json \
@@ -236,13 +142,10 @@ This project follows standard data engineering best practices. For contributions
 4. Submit a pull request with detailed description
 
 Contact & Support
-Project Owner: M Venkata Sainatha Reddy
-Email: your-email@example.com
-LinkedIn: Your LinkedIn Profile
+Project Owner: Sainatha Reddy
+Email: sainathareddybi2017@gmail.com
+LinkedIn: https://www.linkedin.com/in/sainathareddybi2017/
 For technical support or questions about this project, please open an issue in this repository.
-
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 If you found this project helpful, please give it a star!
 This project demonstrates enterprise-level data engineering practices suitable for production healthcare analytics workloads.
