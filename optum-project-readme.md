@@ -39,6 +39,9 @@ This project implements a complete end-to-end data engineering pipeline for heal
 - Scalability: Auto-scaling Databricks clusters with Photon acceleration
 - Reliability: Automated retry logic, error handling, and monitoring
 ```
+<img width="566" height="246" alt="final arc to gold 2025-08-28 074229" src="https://github.com/user-attachments/assets/c9692879-db65-4025-83d2-7de43b3e1101" />
+
+
 
  ✅ Advanced Features
 - Delta Lake: ACID transactions, time travel, and schema evolution
